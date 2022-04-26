@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import LoginFormik from './components/login/LoginFormik';
 import CreateAccountFormik from './components/create/CreateAccountFormik';
+import Feed from './components/feed/Feed';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Routes>
             <Route path='/login' element={<LoginFormik />} />
             <Route path='/create-account' element={  <CreateAccountFormik />} />
+            <Route path='/home' element={  <Feed /> } />
           </Routes>
         </BrowserRouter>
     </div>

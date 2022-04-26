@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import Login from './Login';
 import * as yup from 'yup';
+import { login } from '../../services/accountsApi';
 
 export default function LoginFormik () {
     const validationSchema = yup.object({
@@ -15,7 +16,7 @@ export default function LoginFormik () {
       });
     return (
 
-        <Formik initialValues={{email: "", password: ""}} validationSchema={validationSchema}>
+        <Formik initialValues={{email: "", password: ""}} validationSchema={validationSchema} onSubmit={login}>
             <Login />
         </Formik>
 
