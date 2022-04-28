@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import logo from '../../../icon-above-font.svg';
 import Login from './Login';
 import * as yup from 'yup';
 import { login } from '../../../services/accountsApi';
@@ -6,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react';
 import { Button, Container } from '@mui/material';
 
-export default function LoginFormik() {
+export default function LoginWrapper() {
   const navigate = useNavigate();
 
   const validationSchema = yup.object({
@@ -30,6 +31,9 @@ export default function LoginFormik() {
 
   return (
     <Fragment>
+      <Container  maxWidth="xs" >
+        <img src={logo} alt="logo" />
+      </Container>
       <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema} onSubmit={handleLogin} >
         <Login />
       </Formik>

@@ -2,6 +2,8 @@ import { Fragment, useState } from "react";
 import { Button, Modal, Box } from "@mui/material";
 import { Formik } from "formik";
 import { CreatePostForm } from "./CreatePostForm";
+import { createNewPost } from "../../../services/feedApi";
+import { queryClient } from "../../../App";
 
 const style = {
     position: 'absolute',
@@ -17,13 +19,25 @@ const style = {
 
 export default function CreatePost() {
     const [modalOpen, setModalOpen] = useState(false);
+    // const queryClient = QueryClient();
+
+    const handleModalState = () => {
+        setModalOpen(preVal => !preVal)
+    }
+    
+    const handleSubmit = (values) => {
+        createNewPost(values);
+        handleModalState();
+        queryClient.invalidateQueries("getFeed");
+    }
+
     return (
         <Fragment>
-            <Button onClick={() => { setModalOpen(true) }}>Open modal</Button>
-            <Formik initialValues={{ title: "", body: "" }}>
+            <Button onClick={() => { handleModalState() }}>Create Post</Button>
+            <Formik initialValues={{ title: "", body: "" }} onSubmit={handleSubmit}>
                 <Modal
                     open={modalOpen}
-                    onClose={() => { setModalOpen(false) }}
+                    onClose={() => { handleModalState() }}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >

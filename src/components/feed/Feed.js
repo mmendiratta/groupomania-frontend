@@ -3,6 +3,8 @@ import { getAllFeed } from '../../services/feedApi';
 import CreatePost from './createPost/CreatePost';
 import { useQuery } from "react-query";
 import { Fragment } from 'react';
+import DeleteAccount from "../accounts/delete/DeleteAccount";
+import Logout from "../accounts/logout/Logout"
 
 export default function BasicCard() {
     const { data, error, isLoading } = useQuery("getFeed", getAllFeed);
@@ -26,6 +28,8 @@ export default function BasicCard() {
     return (
         <Fragment>
             <CreatePost />
+            <DeleteAccount />
+            <Logout />
             {data && data.map(item => {
                 return (
                     <Card sx={{ minWidth: 275 }} key={item.id}>

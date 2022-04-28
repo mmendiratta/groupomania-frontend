@@ -1,20 +1,19 @@
-// import logo from './icon-above-font.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query'
-import LoginFormik from './components/accounts/login/LoginFormik';
-import CreateAccountFormik from './components/accounts/create/CreateAccountFormik';
+import LoginWrapper from './components/accounts/login/LoginFormik';
+import CreateAccountWrapper from './components/accounts/create/CreateAccountFormik';
 import Feed from './components/feed/Feed';
 
+export const queryClient = new QueryClient()
+
 function App() {
-  const queryClient = new QueryClient()
   return (
     <div>
-      {/* <img src={logo} alt="logo" /> */}
       <BrowserRouter>
         <Routes>
-          <Route path='/login' element={<LoginFormik />} />
-          <Route path='/create-account' element={<CreateAccountFormik />} />
+          <Route path='/login' element={<LoginWrapper />} />
+          <Route path='/create-account' element={<CreateAccountWrapper />} />
           <Route path='/home' element={
             <QueryClientProvider client={queryClient}>
               <Feed />
