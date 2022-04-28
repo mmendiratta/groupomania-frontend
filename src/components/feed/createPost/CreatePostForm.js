@@ -1,8 +1,8 @@
 import { Container, TextField, Button } from '@mui/material';
 import { Form, useFormikContext } from 'formik';
 
-export default function Login() {
-    const {
+export function CreatePostForm () {
+     const {
         values,
         handleSubmit,
         handleChange,
@@ -17,27 +17,28 @@ export default function Login() {
                     margin="normal"
                     required
                     fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
+                    id="title"
+                    label="Title"
+                    name="title"
                     autoFocus
-                    value={values.email}
+                    value={values.title}
                     onChange={handleChange}
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={touched.email && errors.email}
+                    error={touched.title && Boolean(errors.title)}
+                    helperText={touched.title && errors.title}
                 />
                 <TextField
                     margin="normal"
                     required
                     fullWidth
-                    id="password"
-                    label="Password"
-                    name="password"
-                    type="password"
-                    value={values.password}
+                    id="body"
+                    label="Post Body"
+                    name="body"
+                    multiline
+                    rows={5}
+                    value={values.body}
                     onChange={handleChange}
-                    error={touched.password && Boolean(errors.password)}
-                    helperText={touched.password && errors.password}
+                    error={touched.body && Boolean(errors.body)}
+                    helperText={touched.body && errors.body}
                 />
                 <Button
                     type="submit"
@@ -45,7 +46,7 @@ export default function Login() {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                 >
-                    Sign In
+                    Create Post
                 </Button>
             </Container>
         </Form>

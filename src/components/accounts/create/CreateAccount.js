@@ -8,7 +8,7 @@ export default function CreateAccount() {
         handleChange,
         touched,
         errors
-      } = useFormikContext();
+    } = useFormikContext();
 
     return (
         <Form onSubmit={handleSubmit}>
