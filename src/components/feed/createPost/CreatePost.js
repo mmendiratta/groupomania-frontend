@@ -24,7 +24,7 @@ export default function CreatePost() {
     const handleModalState = () => {
         setModalOpen(preVal => !preVal)
     }
-    
+
     const handleSubmit = (values) => {
         createNewPost(values);
         handleModalState();
@@ -34,7 +34,7 @@ export default function CreatePost() {
     return (
         <Fragment>
             <Button onClick={() => { handleModalState() }}>Create Post</Button>
-            <Formik initialValues={{ title: "", body: "" }} onSubmit={handleSubmit}>
+            <Formik initialValues={{ title: "", body: "", file: null }} onSubmit={handleSubmit}>
                 <Modal
                     open={modalOpen}
                     onClose={() => { handleModalState() }}

@@ -1,11 +1,14 @@
 import { Container, TextField, Button } from '@mui/material';
 import { Form, useFormikContext } from 'formik';
+import { useState } from "react";
 
-export function CreatePostForm () {
-     const {
+export function CreatePostForm() {
+    const [selectedFile, setSelectedFile] = useState(null);
+    const {
         values,
         handleSubmit,
         handleChange,
+        setFieldValue,
         touched,
         errors
     } = useFormikContext();
@@ -40,6 +43,22 @@ export function CreatePostForm () {
                     error={touched.body && Boolean(errors.body)}
                     helperText={touched.body && errors.body}
                 />
+                <Button
+                    variant="outlined"
+                    component="label"
+                >
+                    {selectedFile ? "Upload File" : "Uploaded"}
+                    <input
+                        type="file"
+                        id="file"
+                        name="file"
+                        onChange={(event) => {
+                            setSelectedFile(event.target.files[0]);
+                            setFieldValue("file", event.target.files[0]);
+                        }}
+                        hidden
+                    />
+                </Button>
                 <Button
                     type="submit"
                     fullWidth

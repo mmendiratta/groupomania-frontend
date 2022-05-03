@@ -1,4 +1,4 @@
-import { FEED_URL, getAuthToken, getAccountId } from "../config";
+import { FEED_URL, getAuthToken, getAccountId, IMGUR_URL } from "../config";
 
 export async function getAllFeed() {
     const authToken = getAuthToken();
@@ -14,7 +14,24 @@ export async function getAllFeed() {
     }
 };
 
+const postToImgur = async (file) => {
+    const formData = new FormData();
+
+    formData.append('image', file);
+    const response = await fetch(`${IMGUR_URL}/image`, {
+        method: "POST",
+        async: true,
+        crossDomain: true,
+        headers: {
+            "Authorization": "Client-ID 4d412cf949e3299",
+        },
+        body: formData,
+    });
+    return response.json();
+}
+
 export async function createNewPost(postBody) {
+    const imgurData = await postToImgur(postBody.file)
     const authToken = getAuthToken();
     const accountId = getAccountId();
     console.log(authToken)
@@ -29,7 +46,7 @@ export async function createNewPost(postBody) {
             accountId: accountId,
             title: postBody.title,
             textBody: postBody.body,
-            imageId: postBody.imageId || null
+            imageId: imgurData.data.id || null
         }),
     });
     if (response && response.ok) {
