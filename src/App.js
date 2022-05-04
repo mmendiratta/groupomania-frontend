@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import LoginWrapper from './components/accounts/login/LoginFormik';
 import CreateAccountWrapper from './components/accounts/create/CreateAccountFormik';
-import Feed from './components/feed/Feed';
+import NavDrawer from './components/menu/Drawer';
 
 export const queryClient = new QueryClient()
 
@@ -16,7 +16,7 @@ function App() {
           <Route path='/create-account' element={<CreateAccountWrapper />} />
           <Route path='/home' element={
             <QueryClientProvider client={queryClient}>
-              <Feed />
+              <NavDrawer />
             </QueryClientProvider>} />
         </Routes>
       </BrowserRouter>

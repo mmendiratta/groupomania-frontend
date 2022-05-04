@@ -2,7 +2,7 @@ export const ACCOUNTS_URL = "http://localhost:8080/groupomania/accounts/v1";
 
 export const FEED_URL = "http://localhost:8080/groupomania-feed/v1";
 
-export const IMGUR_URL = "https://api.imgur.com/3";
+export const IMGUR_POST_URL = "https://api.imgur.com/3";
 
 export function getAuthToken() {
     const user = JSON.parse(localStorage.getItem("user"));

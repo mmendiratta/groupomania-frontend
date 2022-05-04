@@ -44,10 +44,10 @@ export function CreatePostForm() {
                     helperText={touched.body && errors.body}
                 />
                 <Button
-                    variant="outlined"
+                    variant={selectedFile ? "contained" : "outlined"}
                     component="label"
                 >
-                    {selectedFile ? "Upload File" : "Uploaded"}
+                    {selectedFile ? "Uploaded" : "Upload File"}
                     <input
                         type="file"
                         id="file"
