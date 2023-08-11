@@ -1,6 +1,6 @@
-export const ACCOUNTS_URL = "http://localhost:8080/groupomania/accounts/v1";
+export const ACCOUNTS_URL = "https://groupomanina-backend.onrender.com/groupomania/accounts/v1";
 
-export const FEED_URL = "http://localhost:8080/groupomania-feed/v1";
+export const FEED_URL = "https://groupomanina-backend.onrender.com/groupomania-feed/v1";
 
 export const IMGUR_POST_URL = "https://api.imgur.com/3";
 

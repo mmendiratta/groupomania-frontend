@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path='/login' element={<LoginWrapper />} />
           <Route path='/create-account' element={<CreateAccountWrapper />} />
-          <Route path='/home' element={
+          <Route path='/' element={
             <QueryClientProvider client={queryClient}>
               <NavDrawer />
             </QueryClientProvider>} />
